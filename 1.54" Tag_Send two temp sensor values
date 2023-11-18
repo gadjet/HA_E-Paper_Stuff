@@ -1,27 +1,34 @@
 service: open_epaper_link.drawcustom
 target:
   entity_id:
-    - open_epaper_link.0000021EF4643412# Change this for your tag ID
+    - open_epaper_link.0000021EF4643412
 data:
   background: white
   rotate: 0
   ttl: 300
   payload:
+    - type: rectangle
+      x_start: 0
+      x_end: 150
+      y_start: 0
+      y_end: 25
+      width: 1
+      fill: red
+      outline: red
+      #width: 2
     - type: text
       value: "Hot Water "
       font: ppb.ttf
       x: 25
-      "y": 2
+      "y": 4
       size: 20
-      color: black
+      color: white
     - type: text
-      value: " {{ states('sensor.hot_water_temp') | round(0) }} °C "#Change this for your sensor details
+      value: " {{ states('sensor.hot_water_temp') | round(0) }} °C "
       font: ppb.ttf
       x: 10
       "y": 30
-      color: >-
-        {% set temp = states('sensor.hot_water_temp') | float %} {% if temp <=
-        33 %}black {% else %}red {% endif %}#Change this for your sensor details
+      color: black
       size: 50
     - type: line
       fill: black
@@ -31,7 +38,7 @@ data:
       x_end: 150
       y_end: 75
     - type: text
-      value: " {{ states('sensor.outside_temp') | round(0) }} °C "#Change this for your sensor details
+      value: " {{ states('sensor.outside_temp') | round(0) }} °C "
       font: ppb.ttf
       x: 10
       "y": 105
